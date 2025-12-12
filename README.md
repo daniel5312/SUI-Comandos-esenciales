@@ -12,6 +12,15 @@ Documentación completa de los comandos esenciales para desarrollo en la blockch
 
 ## 🔧 Configuración Inicial
 
+### Instalación
+```bash
+curl -sSfL https://raw.githubusercontent.com/Mystenlabs/suiup/main/install.sh | sh
+```
+
+```bash
+suiup install sui]
+```
+
 ### Verificar Instalación
 ```bash
 sui --version
