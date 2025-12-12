@@ -18,7 +18,7 @@ curl -sSfL https://raw.githubusercontent.com/Mystenlabs/suiup/main/install.sh | 
 ```
 
 ```bash
-suiup install sui]
+suiup install sui
 ```
 
 ### Verificar Instalación
