@@ -30,7 +30,8 @@ fun init(ctx: &mut TxContext) {
         price: 1_000_000_000, // 1 SUI precio base
         owner: tx_context::sender(ctx),
     };
-    transfer::transfer(shop, tx_context::sender(ctx));
+    //transfer::transfer(shop, tx_context::sender(ctx));
+    transfer::share_object(shop); // ¡Ahora es compartida y pública!
 }
 
 // --- Compra ---
