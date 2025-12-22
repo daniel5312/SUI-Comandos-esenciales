@@ -4,7 +4,8 @@ import {
   useSignAndExecuteTransaction,
   useCurrentAccount,
 } from "@mysten/dapp-kit"; // <-- Corregido: 'Transaction'
-import { TransactionBlock } from "@mysten/sui"; // <-- Importación antigua de respaldo // <-- Corregido: Importación directa
+import { Transaction } from "@mysten/sui/transactions"; // <-- Importación antigua de respaldo // <-- Corregido: Importación directa
+import { bcs } from "@mysten/sui/bcs";
 import {
   PACKAGE_ID,
   SHOP_ID,
@@ -26,15 +27,18 @@ export function CompraManilla() {
       return;
     }
 
-    const txb = new TransactionBlock();
+    const txb = new Transaction();
 
     // 1. Crear una moneda de pago (1 SUI)
-    const [coin] = txb.splitCoins(txb.gas, [txb.pure(PRICE)]);
-
+    const [coin] = txb.splitCoins(txb.gas, [txb.pure("u64", PRICE)]);
     // 2. Llamada a la función Move
     txb.moveCall({
       target: `${PACKAGE_ID}::${MODULE_NAME}::${FUNCTION_NAME}`,
-      arguments: [txb.object(SHOP_ID), coin, txb.pure("Plata Y cuero")],
+      arguments: [
+        txb.object(SHOP_ID),
+        coin,
+        txb.pure("string", "Plata Y cuero"),
+      ],
     });
 
     // Ejecución de la transacción con el hook renombrado

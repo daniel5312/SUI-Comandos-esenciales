@@ -2,7 +2,7 @@
 "use client";
 
 import { WalletProvider, SuiClientProvider } from "@mysten/dapp-kit";
-import { getFullnodeUrl } from "@mysten/sui";
+import { getFullnodeUrl } from "@mysten/sui/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./globals.css";
 
